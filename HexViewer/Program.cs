@@ -13,6 +13,7 @@ namespace HexViewer
         static void Main(string[] args)
         {
             path = Console.ReadLine();
+            //C:\Users\bianc\Desktop\lorem.txt
             FileStream file = new FileStream(path, FileMode.Open);
             int line;
             int counter = 0;
@@ -31,7 +32,7 @@ namespace HexViewer
                     else
                         sidetext.Append(character);
                     counter++;
-                    if (counter < 9 || counter > 9 && counter < 16)
+                    if (counter !=9 && counter < 16)
                     {
                         Console.Write(value + " ");
                     }
@@ -40,6 +41,7 @@ namespace HexViewer
                         if (counter == 9) Console.Write($"|{value} "); // halfway
                         else
                         {
+                            
                             Console.Write(value + " ");
                             Console.WriteLine("|" + sidetext);
                             sidetext.Clear();
@@ -51,6 +53,13 @@ namespace HexViewer
                     }
                 }
             }
+            while (counter < 16)
+            {
+                if (counter == 8) Console.Write($"|00 ");
+                else
+                    Console.Write("00 "); counter++; 
+            }
+            Console.WriteLine("|" + sidetext);
             Console.ReadKey();
         }
     }
